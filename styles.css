@@ -1,0 +1,12 @@
+body {
+    background-image: url('fondo.gif'); /* Especifica la imagen de fondo */
+    background-size: cover; /* Asegura que el GIF cubra toda la pantalla */
+    background-position: center top; /* Centra el GIF en la página */
+    background-repeat: no-repeat; /* Evita que el GIF se repita */
+}
+canvas {
+    border: 1px solid white;
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}

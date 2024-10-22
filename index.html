@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <!-- Incluye los scripts en el orden en que deben ser ejecutados -->
+    <script src="js/player.js"></script>
+    <script src="js/ghost.js"></script>
+    <script src="js/food.js"></script>
+    <script src="js/wall.js"></script>
+    <script src="js/game.js"></script>
+    <script>
+        // Código para inicializar el juego
+        const game = new Game();
+
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space') {
+                game.start();
+            }
+            if (game.isRunning) {
+                switch (event.key) {
+                    case 'ArrowUp':
+                        game.player.direction = 'UP';
+                        break;
+                    case 'ArrowLeft':
+                        game.player.direction = 'LEFT';
+                        break;
+                    case 'ArrowRight':
+                        game.player.direction = 'RIGHT';
+                        break;
+                    case 'ArrowDown':
+                        game.player.direction = 'DOWN';
+                        break;
+                }
+            }
+        });
+
+        setInterval(() => {
+            if (game.isRunning) {
+                game.player.move();
+                game.ghosts.forEach(ghost => ghost.move());
+                game.update();
+            }
+        }, 500 / 60);
+    </script>
+</body>
+</html>
